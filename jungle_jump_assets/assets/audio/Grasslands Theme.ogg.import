@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bo8xxsnnsekqc"
+path="res://.godot/imported/Grasslands Theme.ogg-82e40d4727e2fd50114934fd7e493fe7.oggvorbisstr"
+
+[deps]
+
+source_file="res://jungle_jump_assets/assets/audio/Grasslands Theme.ogg"
+dest_files=["res://.godot/imported/Grasslands Theme.ogg-82e40d4727e2fd50114934fd7e493fe7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
