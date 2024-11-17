@@ -1,8 +1,17 @@
 extends CharacterBody2D
 
+signal life_changed(life: int)
+signal died
+
 @export var gravity: float = 750
 @export var run_speed: float = 150
 @export var jump_speed: float = -300
+@export var life: int = 3:
+	set(value):
+		life = value
+		life_changed.emit(life)
+		if life <= 0:
+			change_state(DEAD)
 
 enum {IDLE, RUN, JUMP, HURT, DEAD}
 var state: int = IDLE
@@ -22,7 +31,15 @@ func change_state(new_state: int) -> void:
 			$AnimationPlayer.play("hurt")
 		JUMP:
 			$AnimationPlayer.play("jump_up")
+		HURT:
+			$AnimationPlayer.play("hurt")
+			velocity.y = -200
+			velocity.x = -100 * sign(velocity.x)
+			life -= 1
+			await get_tree().create_timer(0.5).timeout
+			change_state(IDLE)
 		DEAD:
+			died.emit()
 			hide()
 
 # player movement 
@@ -39,6 +56,8 @@ func get_input() -> void:
 	if left: 
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
+	if state == HURT:
+		return
 	if jump and is_on_floor():
 		change_state(JUMP)
 		velocity.y = jump_speed
@@ -48,6 +67,7 @@ func get_input() -> void:
 		change_state(IDLE)
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
+
 
 # add gravity and movement
 func _physics_process(delta: float) -> void:
@@ -68,3 +88,9 @@ func reset(_position: Vector2) -> void:
 	position = _position
 	show()
 	change_state(IDLE)
+	life = 3
+
+#hurt function
+func hurt() -> void: 
+	if state != HURT:
+		change_state(HURT)
