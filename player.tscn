@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxxg5dx7j03es"]
+[gd_scene load_steps=12 format=3 uid="uid://dxxg5dx7j03es"]
 
 [ext_resource type="Texture2D" uid="uid://dc6a66fboklxb" path="res://jungle_jump_assets/assets/player_sheet.png" id="1_ckign"]
 
@@ -153,6 +153,9 @@ _data = {
 "run": SubResource("Animation_2ql6a")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm1f8"]
+size = Vector2(10, 22)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
@@ -168,3 +171,10 @@ frame = 7
 libraries = {
 "": SubResource("AnimationLibrary_8h80d")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_qm1f8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
