@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://tq65uffxaptd"]
+[gd_scene load_steps=7 format=3 uid="uid://tq65uffxaptd"]
 
+[ext_resource type="Script" path="res://items/item.gd" id="1_hpsmm"]
 [ext_resource type="Texture2D" uid="uid://dv7aeymyx5lpa" path="res://jungle_jump_assets/assets/sprites/cherry.png" id="1_u7g6u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ugqj"]
@@ -47,6 +48,7 @@ _data = {
 [node name="Item" type="Area2D"]
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("1_hpsmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_u7g6u")
@@ -54,6 +56,7 @@ hframes = 5
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_4ugqj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
