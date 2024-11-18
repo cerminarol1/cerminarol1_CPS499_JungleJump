@@ -65,3 +65,5 @@ libraries = {
 "": SubResource("AnimationLibrary_tjust")
 }
 autoplay = "cherry"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
