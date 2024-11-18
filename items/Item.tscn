@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://tq65uffxaptd"]
+
+[ext_resource type="Texture2D" uid="uid://dv7aeymyx5lpa" path="res://jungle_jump_assets/assets/sprites/cherry.png" id="1_u7g6u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ugqj"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_mm54i"]
+resource_name = "cherry"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_t6dnb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjust"]
+_data = {
+"RESET": SubResource("Animation_t6dnb"),
+"cherry": SubResource("Animation_mm54i")
+}
+
+[node name="Item" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u7g6u")
+hframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ugqj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CollisionShape2D")
+libraries = {
+"": SubResource("AnimationLibrary_tjust")
+}
+autoplay = "cherry"
