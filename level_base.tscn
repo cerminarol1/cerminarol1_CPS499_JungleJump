@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ct51j1uxo2mkm"]
+[gd_scene load_steps=16 format=3 uid="uid://ct51j1uxo2mkm"]
 
 [ext_resource type="Texture2D" uid="uid://dts41om1jjnni" path="res://jungle_jump_assets/assets/environment/tileset.png" id="1_cawte"]
+[ext_resource type="Script" path="res://level_base.gd" id="1_x8ihx"]
 [ext_resource type="Texture2D" uid="uid://3xt4gxoriyes" path="res://jungle_jump_assets/assets/environment/props.png" id="2_35jg3"]
 [ext_resource type="Texture2D" uid="uid://ck1r4h413xqm" path="res://jungle_jump_assets/assets/cherry_spawn.png" id="3_vd06u"]
 [ext_resource type="Texture2D" uid="uid://dxkpsrqnjt0kh" path="res://jungle_jump_assets/assets/gem_spawn.png" id="4_kommo"]
+[ext_resource type="PackedScene" uid="uid://dxxg5dx7j03es" path="res://player.tscn" id="6_e4owi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssth0"]
 texture = ExtResource("1_cawte")
@@ -557,6 +559,7 @@ custom_data_layer_0/type = 4
 sources/1 = SubResource("TileSetAtlasSource_50oem")
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_x8ihx")
 
 [node name="TML_World" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_ngcla")
@@ -568,3 +571,7 @@ tile_set = SubResource("TileSet_3jpp2")
 [node name="TML_Danger" type="TileMapLayer" parent="."]
 visible = false
 tile_set = SubResource("TileSet_b40l5")
+
+[node name="Player" parent="." instance=ExtResource("6_e4owi")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
