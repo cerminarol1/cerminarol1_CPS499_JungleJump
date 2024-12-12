@@ -76,6 +76,14 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	#update the player
 	move_and_slide()
+	#detect a collision against the Danger tilemap
+	if state == HURT:
+		return
+	for i in range(get_slide_collision_count()):
+		var collision: KinematicCollision2D = get_slide_collision(i)
+		var collider: Object = collision.get_collider()
+		if collider.is_in_group("danger"): 
+			hurt()
 	#detect when a jump ends (move and slide's update to the is_on_floor)
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
