@@ -9,7 +9,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAE
 
 [node name="TML_Items" parent="." index="1"]
 visible = true
-tile_map_data = PackedByteArray("AAARAPn/AQAAAAAAAAAeAP7/AAAAAAAAAAD9/+P/AAAAAAAAAADr//D/AQAAAAAAAADs/97/AQAAAAAAAADW/+T/AgAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAARAPn/AQAAAAAAAAAeAP7/AAAAAAAAAAD9/+P/AAAAAAAAAADs//D/AQAAAAAAAADu/97/AQAAAAAAAAA=")
 
 [node name="TML_Danger" parent="." index="2"]
 visible = true
