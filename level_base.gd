@@ -85,7 +85,8 @@ func set_camera_limits() -> void:
 	# Sets the camera limits based on the world tilemap's size and tile size
 	var map_size: Rect2 = get_world().get_used_rect()
 	var cell_size: Vector2 = get_world().tile_set.tile_size
-
+	#set camera top limit to background
+	get_camera_2d().limit_top = -224
 	# Set camera limits based on the tilemap dimensions
 	get_camera_2d().limit_left = int((map_size.position.x - 5) * cell_size.x)
 	get_camera_2d().limit_right = int((map_size.end.x + 5) * cell_size.x)
