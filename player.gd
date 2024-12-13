@@ -84,6 +84,13 @@ func _physics_process(delta: float) -> void:
 		var collider: Object = collision.get_collider()
 		if collider.is_in_group("danger"): 
 			hurt()
+		
+		if collider.is_in_group("enemies"):
+			if position.y < collider.position.y:
+				collider.take_damage()
+				velocity.y = -200
+			else: 
+				hurt()
 	#detect when a jump ends (move and slide's update to the is_on_floor)
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)

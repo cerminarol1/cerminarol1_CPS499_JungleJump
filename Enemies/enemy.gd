@@ -55,4 +55,18 @@ func _physics_process(delta: float) -> void:
 	#free the node if it falls to far 
 	if position.y > 10000:
 		queue_free()
+
+func take_damage() -> void:
+	# play the death animation
+	get_animation_player().play("death")
 	
+	# disable the collision shape
+	get_collision_shape().set_deferred("disabled", true)
+	
+	#stop processing physics for this node
+	set_physics_process(false)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
+		queue_free()
