@@ -12,9 +12,22 @@ signal died
 		life_changed.emit(life)
 		if life <= 0:
 			change_state(DEAD)
+@export var max_jumps: int = 2
+@export var double_jump_factor: float = 1.5
+var jump_count: int = 0
+var _dust: CPUParticles2D = null
+
+func get_dust() -> CPUParticles2D:
+	if _dust == null:
+		_dust = $Dust
+	return _dust
 
 enum {IDLE, RUN, JUMP, HURT, DEAD}
 var state: int = IDLE
+
+func get_animation_player() -> AnimationPlayer: # to make double jump code work and test
+	return $AnimationPlayer
+
 
 func _ready() -> void:
 	change_state(IDLE) # change_state needs to be defined 
@@ -29,7 +42,8 @@ func change_state(new_state: int) -> void:
 			$AnimationPlayer.play("run")
 		JUMP:
 			$JumpSound.play()
-			$AnimationPlayer.play("jump_up")
+			get_animation_player().play("jump_up") #$AnimationPlayer.play("jump_up")
+			jump_count = 1
 		HURT:
 			$HurtSound.play()
 			$AnimationPlayer.play("hurt")
@@ -59,15 +73,25 @@ func get_input() -> void:
 		$Sprite2D.flip_h = true
 	if state == HURT:
 		return
+	# Double jump if we are currently in the air (from a jump not falling) and have jumps left
+	#if jump and state == JUMP and jump_count < max_jumps and jump_count > 0:
+		#get_animation_player().play("jump_up")# $AnimationPlayer.play("jump_up") 
+		#velocity.y = jump_speed / double_jump_factor
+		#jump_count += 1
 	if jump and is_on_floor():
 		change_state(JUMP)
 		velocity.y = jump_speed
+	if state == JUMP and is_on_floor():
+		change_state(IDLE)
+		jump_count = 0
+		#$Dust.emitting = true#get_dust().emmitting = true
 	if state == IDLE and velocity.x != 0 :
 		change_state(RUN)
 	if state == RUN and velocity.x ==0:
 		change_state(IDLE)
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
+
 
 
 # add gravity and movement
@@ -92,17 +116,18 @@ func _physics_process(delta: float) -> void:
 				velocity.y = -200
 			else: 
 				hurt()
-	#detect when a jump ends (move and slide's update to the is_on_floor)
+	# Detect when a jump ends (move and slide's update to the is_on_floor)
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
+		jump_count = 0
 	#check if character is falling
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")
-		
 	#free the node if it falls to far, does not work
 	if position.y > 1000:
 		queue_free()
 		died.emit()
+
 # reset function
 func reset(_position: Vector2) -> void:
 	position = _position

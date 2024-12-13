@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxxg5dx7j03es"]
+[gd_scene load_steps=16 format=3 uid="uid://dxxg5dx7j03es"]
 
 [ext_resource type="Texture2D" uid="uid://dc6a66fboklxb" path="res://jungle_jump_assets/assets/player_sheet.png" id="1_ckign"]
 [ext_resource type="Script" path="res://player.gd" id="1_li0xy"]
@@ -159,6 +159,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm1f8"]
 size = Vector2(10, 22)
 
+[sub_resource type="Gradient" id="Gradient_8rcd3"]
+colors = PackedColorArray(0.603922, 0.482353, 0.309804, 1, 0.603922, 0.482353, 0.309804, 0)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
@@ -190,3 +193,17 @@ volume_db = -10.0
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_sqodt")
 volume_db = -10.0
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
+emitting = false
+amount = 20
+lifetime = 0.45
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(1, 6)
+initial_velocity_max = 10.0
+color_ramp = SubResource("Gradient_8rcd3")
