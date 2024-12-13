@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://y0lhxi386tfr"]
 
-[ext_resource type="Script" path="res://ui/hud.gd" id="1_efgg7"]
+[ext_resource type="Script" path="res://UI/hud.gd" id="1_efgg7"]
 [ext_resource type="FontFile" uid="uid://ci47jdpnxpotu" path="res://jungle_jump_assets/assets/Kenney Thick.ttf" id="2_65qi1"]
 [ext_resource type="Texture2D" uid="uid://smyb7657pt8i" path="res://jungle_jump_assets/assets/heart.png" id="3_yxrbi"]
 

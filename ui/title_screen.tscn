@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3316bepink0p"]
+[gd_scene load_steps=10 format=3 uid="uid://d3316bepink0p"]
 
 [ext_resource type="Texture2D" uid="uid://khdio1113c74" path="res://jungle_jump_assets/assets/environment/back.png" id="1_3n6mm"]
+[ext_resource type="Script" path="res://UI/title_screen.gd" id="1_21ht8"]
 [ext_resource type="Texture2D" uid="uid://cojwmgwiligwf" path="res://jungle_jump_assets/assets/environment/middle.png" id="2_murfq"]
 [ext_resource type="FontFile" uid="uid://ci47jdpnxpotu" path="res://jungle_jump_assets/assets/Kenney Thick.ttf" id="3_rquyb"]
 
@@ -129,6 +130,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_21ht8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

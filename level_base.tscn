@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1r4h413xqm" path="res://jungle_jump_assets/assets/cherry_spawn.png" id="3_vd06u"]
 [ext_resource type="Texture2D" uid="uid://dxkpsrqnjt0kh" path="res://jungle_jump_assets/assets/gem_spawn.png" id="4_kommo"]
 [ext_resource type="PackedScene" uid="uid://dxxg5dx7j03es" path="res://player.tscn" id="6_e4owi"]
-[ext_resource type="PackedScene" uid="uid://y0lhxi386tfr" path="res://ui/hud.tscn" id="9_en5i7"]
+[ext_resource type="PackedScene" uid="uid://y0lhxi386tfr" path="res://UI/hud.tscn" id="9_en5i7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssth0"]
 texture = ExtResource("1_cawte")
@@ -489,4 +489,5 @@ tile_set = SubResource("TileSet_b40l5")
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("9_en5i7")]
 
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
