@@ -13,7 +13,7 @@ func get_life_counter() -> Array[Node]:
 #getter for score label
 func get_score_label() -> Label: 
 	if _score_label == null:
-		_score_label = $HBoxContainer/Score as Label
+		_score_label = $HBoxContainer/score as Label
 	return _score_label
 
 # Updates the visibility of life icons
