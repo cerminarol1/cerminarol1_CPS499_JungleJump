@@ -4,6 +4,9 @@ extends Node2D
 @onready var Player: Node = $Player 
 @onready var SpawnPoint: Marker2D = $SpawnPoint 
 
+# add door
+var door_scene: PackedScene = load("res://items/door.tscn")
+
 # Class properties (variables)
 var _items: TileMapLayer = null
 var _world: TileMapLayer = null
@@ -100,10 +103,16 @@ func spawn_items() -> void:
 		var data: TileData = get_items().get_cell_tile_data(cell)
 		var type: String = data.get_custom_data("type")  # Assuming "type" is stored as String
 		
-		var item: Node = item_scene.instantiate()
-		add_child(item)
-		item.init(type, get_items().map_to_local(cell))
-		item.picked_up.connect(self._on_item_picked_up)
+		if type == "door":
+			var door: Node = door_scene.instantiate()
+			add_child(door)
+			door.position = get_items().map_to_local(cell)
+			door.body_entered.connect(_on_door_entered)
+		else:
+			var item: Node = item_scene.instantiate()
+			add_child(item)
+			item.init(type, get_items().map_to_local(cell))
+			item.picked_up.connect(self._on_item_picked_up)
 
 # Handles item pickup and increments score
 func _on_item_picked_up() -> void:
@@ -114,6 +123,9 @@ func set_score(value: int) -> void:
 	score = value
 	score_changed.emit(score)
 
-
 func _on_player_died() -> void:
 	GameState.restart()
+
+#handle when player eneters a door
+func _on_door_entered(_body) -> void: 
+	GameState.next_level()

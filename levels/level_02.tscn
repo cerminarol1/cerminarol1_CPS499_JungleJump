@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=4 uid="uid://sjpwwc46l82k"]
+
+[ext_resource type="PackedScene" uid="uid://ct51j1uxo2mkm" path="res://level_base.tscn" id="1_xldga"]
+
+[node name="Level101" instance=ExtResource("1_xldga")]
+
+[node name="TML_World" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wAAAAABAAEAAAD8/wAAAAAFAAEAAAD7/wAAAAAFAAEAAAD6/wAAAAAFAAEAAAD5/wAAAAAFAAEAAAD4/wAAAAAFAAEAAAD3/wAAAAAFAAEAAAD2/wAAAAAFAAEAAAD1//n/AQATAAEAAAD7//7/AQAPAAYAAAAHAAEAAAADAAMAAAAEAAEAAAADAAMAAAADAAEAAAADAAMAAAACAAEAAAADAAMAAAABAAEAAAADAAMAAAAAAAEAAAADAAMAAAD//wEAAAADAAMAAAD+/wEAAAADAAMAAAD9/wEAAAADAAMAAAD8/wEAAAADAAMAAAD7/wEAAAADAAMAAAD6/wEAAAADAAMAAAD5/wEAAAADAAMAAAD3/wEAAAADAAMAAAD2/wEAAAADAAMAAAD4/wEAAAADAAMAAAA=")
+
+[node name="TML_Items" parent="." index="2"]
+visible = true
+
+[node name="TML_Danger" parent="." index="3" groups=["danger"]]
+visible = true
+
+[node name="SpawnPoint" parent="." index="5"]
+position = Vector2(-4, -1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ct51j1uxo2mkm"]
+[gd_scene load_steps=19 format=3 uid="uid://ct51j1uxo2mkm"]
 
 [ext_resource type="Texture2D" uid="uid://dts41om1jjnni" path="res://jungle_jump_assets/assets/environment/tileset.png" id="1_cawte"]
 [ext_resource type="Script" path="res://level_base.gd" id="1_x8ihx"]
@@ -301,6 +301,12 @@ texture = ExtResource("4_kommo")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, 16, 0, 16, 16.5, 0, 16)
 0:0/0/custom_data_0 = "gem"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_077s4"]
+texture = ExtResource("2_35jg3")
+0:3/size_in_atlas = Vector2i(3, 3)
+0:3/0 = 0
+0:3/0/custom_data_0 = "door"
+
 [sub_resource type="TileSet" id="TileSet_3jpp2"]
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 3
@@ -308,6 +314,7 @@ custom_data_layer_0/name = "type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_rii8e")
 sources/1 = SubResource("TileSetAtlasSource_5a354")
+sources/3 = SubResource("TileSetAtlasSource_077s4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50oem"]
 texture = ExtResource("2_35jg3")
