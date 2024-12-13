@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://tt4mod0em3fw"]
+[gd_scene load_steps=3 format=4 uid="uid://tt4mod0em3fw"]
 
 [ext_resource type="PackedScene" uid="uid://ct51j1uxo2mkm" path="res://level_base.tscn" id="1_nipcm"]
+[ext_resource type="PackedScene" uid="uid://bmcjn6xpoqo7h" path="res://Enemies/enemy.tscn" id="2_1rgpi"]
 
 [node name="Level101" instance=ExtResource("1_nipcm")]
 
@@ -17,3 +18,6 @@ tile_map_data = PackedByteArray("AAAbAP7/AQAJAAwAAAAcAP7/AQAJAAwAAAAKAP//AQAJAAw
 
 [node name="SpawnPoint" parent="." index="5"]
 position = Vector2(-4, -1)
+
+[node name="Enemy" parent="." index="6" instance=ExtResource("2_1rgpi")]
+position = Vector2(-154, -250)
