@@ -58,6 +58,9 @@ func _physics_process(delta: float) -> void:
 		
 
 func take_damage() -> void:
+	#play death sound
+	$DeathSound.play()
+	
 	# play the death animation
 	get_animation_player().play("death")
 	

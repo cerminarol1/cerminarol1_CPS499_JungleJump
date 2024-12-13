@@ -82,6 +82,8 @@ func _ready() -> void:
 	get_player().reset(get_spawn_point().position)
 	#set_camera_limits()
 	spawn_items()
+	$LevelMusic.play()
+	$LevelMusic.stream.loop = true
 
 # Function to set camera limits
 func set_camera_limits() -> void:
@@ -117,6 +119,7 @@ func spawn_items() -> void:
 # Handles item pickup and increments score
 func _on_item_picked_up() -> void:
 	score += 1
+	$ItemPickupSound.play()
 
 # Sets the score and emits the signal
 func set_score(value: int) -> void:
@@ -124,6 +127,7 @@ func set_score(value: int) -> void:
 	score_changed.emit(score)
 
 func _on_player_died() -> void:
+	$LevelMusic.stop()
 	GameState.restart()
 
 #handle when player eneters a door

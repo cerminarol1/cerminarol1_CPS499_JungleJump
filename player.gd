@@ -28,8 +28,10 @@ func change_state(new_state: int) -> void:
 		RUN:
 			$AnimationPlayer.play("run")
 		JUMP:
+			$JumpSound.play()
 			$AnimationPlayer.play("jump_up")
 		HURT:
+			$HurtSound.play()
 			$AnimationPlayer.play("hurt")
 			velocity.y = -200
 			velocity.x = -100 * sign(velocity.x)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ct51j1uxo2mkm"]
+[gd_scene load_steps=21 format=3 uid="uid://ct51j1uxo2mkm"]
 
 [ext_resource type="Texture2D" uid="uid://dts41om1jjnni" path="res://jungle_jump_assets/assets/environment/tileset.png" id="1_cawte"]
 [ext_resource type="Script" path="res://level_base.gd" id="1_x8ihx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dxkpsrqnjt0kh" path="res://jungle_jump_assets/assets/gem_spawn.png" id="4_kommo"]
 [ext_resource type="PackedScene" uid="uid://dxxg5dx7j03es" path="res://player.tscn" id="6_e4owi"]
 [ext_resource type="PackedScene" uid="uid://y0lhxi386tfr" path="res://UI/hud.tscn" id="9_en5i7"]
+[ext_resource type="AudioStream" uid="uid://dpklj2l6rekuh" path="res://jungle_jump_assets/assets/audio/pickup2.ogg" id="10_xlp8s"]
+[ext_resource type="AudioStream" uid="uid://bo8xxsnnsekqc" path="res://jungle_jump_assets/assets/audio/Grasslands Theme.ogg" id="11_q5rw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ssth0"]
 texture = ExtResource("1_cawte")
@@ -494,6 +496,13 @@ tile_set = SubResource("TileSet_b40l5")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("9_en5i7")]
+
+[node name="ItemPickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_xlp8s")
+volume_db = -10.0
+
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_q5rw2")
 
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
