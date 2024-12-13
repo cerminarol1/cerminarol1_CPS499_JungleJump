@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3316bepink0p"]
+
+[ext_resource type="Texture2D" uid="uid://khdio1113c74" path="res://jungle_jump_assets/assets/environment/back.png" id="1_3n6mm"]
+[ext_resource type="Texture2D" uid="uid://cojwmgwiligwf" path="res://jungle_jump_assets/assets/environment/middle.png" id="2_murfq"]
+[ext_resource type="FontFile" uid="uid://ci47jdpnxpotu" path="res://jungle_jump_assets/assets/Kenney Thick.ttf" id="3_rquyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bjp81"]
+font = ExtResource("3_rquyb")
+font_size = 72
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lm3eh"]
+font = ExtResource("3_rquyb")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1110.0
+offset_bottom = 605.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3n6mm")
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 278.0
+offset_right = 1245.0
+offset_bottom = 646.0
+texture = ExtResource("2_murfq")
+stretch_mode = 1
+
+[node name="title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 209.0
+offset_top = 167.0
+offset_right = 929.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jungle Jump"
+label_settings = SubResource("LabelSettings_bjp81")
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 108.0
+offset_top = 514.0
+offset_right = 942.0
+offset_bottom = 568.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Space to Play"
+label_settings = SubResource("LabelSettings_lm3eh")
