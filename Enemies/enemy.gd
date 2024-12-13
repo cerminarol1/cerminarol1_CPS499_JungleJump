@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	#free the node if it falls to far 
 	if position.y > 10000:
 		queue_free()
+		
 
 func take_damage() -> void:
 	# play the death animation

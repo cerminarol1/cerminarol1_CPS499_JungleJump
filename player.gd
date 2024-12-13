@@ -33,12 +33,13 @@ func change_state(new_state: int) -> void:
 			$AnimationPlayer.play("hurt")
 			velocity.y = -200
 			velocity.x = -100 * sign(velocity.x)
-			#life -= 1, moved to hurt()
-			await get_tree().create_timer(0.5).timeout
-			change_state(IDLE)
+			life -= 1 
+			if life > 0:
+				await get_tree().create_timer(0.5).timeout
+				change_state(IDLE)
 		DEAD:
 			died.emit()
-			hide()
+			queue_free() #was hide
 
 # player movement 
 func get_input() -> void:
@@ -96,6 +97,10 @@ func _physics_process(delta: float) -> void:
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")
 		
+	#free the node if it falls to far, does not work
+	if position.y > 1000:
+		queue_free()
+		died.emit()
 # reset function
 func reset(_position: Vector2) -> void:
 	position = _position
@@ -106,5 +111,4 @@ func reset(_position: Vector2) -> void:
 #hurt function
 func hurt() -> void: 
 	if state != HURT:
-		life -= 1
 		change_state(HURT)

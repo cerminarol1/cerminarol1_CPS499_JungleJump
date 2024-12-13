@@ -3,7 +3,7 @@ extends Node
 var num_levels: int = 2
 var current_level: int = 0
 var game_scene: String = "res://main.tscn"
-var title_screen: String = "res://ui/title_scene.tscn"
+var title_screen: String = "res://UI/title_screen.tscn"
 
 func restart() -> void: 
 	current_level = 0
